@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "TextureManager.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -34,6 +35,7 @@ void Game::render() {
     for (i = sprites.begin(); i != sprites.end(); ++i) {
         (*i)->draw();
     }
+    TextureManager::Instance()->draw("mk", 0, 0, 51, 100);
     SDL_RenderPresent(renderer);
 }
 
