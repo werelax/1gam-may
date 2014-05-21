@@ -1,44 +1,29 @@
 #include "Sprite.h"
-#include <iostream>
+#include "TextureManager.h"
 
-Sprite::Sprite(const char* sheetpath, int x, int y, int spritew, int spriteh,
-               int frames, SDL_Renderer* ren) {
-    currentFrame = 0;
-    xpos = x;
-    ypos = y;
-    nframes = frames;
-    w = spritew;
-    h = spriteh;
-    renderer = ren;
-    if (renderer == nullptr) {
-        std::cout << "Renderer not initialized!" << std::endl;
-    }
-    SDL_Surface* tempSurface = IMG_Load(sheetpath);
-    if (tempSurface == nullptr) {
-        std::cout << "cannot load the sprite: " << sheetpath << std::endl;
-    } else {
-        std::cout << "image loaded OK" << std::endl;
-    }
-    texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
-    if (texture == nullptr) {
-        std::cout << "cannot load the surface: " << sheetpath << std::endl;
-    } else {
-        std::cout << "surface loaded OK" << std::endl;
-    }
-    SDL_FreeSurface(tempSurface);
+Sprite::Sprite(std::string textureid, int x, int y, int spritew, int spriteh,
+               int nframes, int row, int currentFrame) {
+    init(textureid, x, y, spritew, spriteh, nframes, row, currentFrame);
 }
 
-void Sprite::draw() {
-    SDL_Rect srcRect;
-    SDL_Rect destRect;
+Sprite::~Sprite() {
+}
 
-    srcRect.x = currentFrame * w;
-    srcRect.y = 0;
-    srcRect.w = destRect.w = w;
-    srcRect.h = destRect.h = h;
-    destRect.x = xpos;
-    destRect.y = ypos;
-    SDL_RenderCopy(renderer, texture, &srcRect, &destRect);
+void Sprite::init(std::string textureid, int x, int y, int spritew, int spriteh,
+                  int nframes, int row, int currentFrame) {
+    id = textureid;
+    position = new Vector2D(x, y);
+    w = spritew;
+    h = spriteh;
+    this->nframes = nframes;
+    this->row = row;
+    this->currentFrame = currentFrame;
+}
+
+void Sprite::draw(SDL_Renderer* renderer) {
+    TextureManager::Instance()->drawFrame(id, round(position->getX()),
+                                          round(position->getY()), w, h, row,
+                                          currentFrame);
 }
 
 void Sprite::update() {

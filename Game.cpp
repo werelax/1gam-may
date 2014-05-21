@@ -25,17 +25,15 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height,
         return false;
     }
 
-    prunning = true;
     return true;
 }
 
 void Game::render() {
     SDL_RenderClear(renderer);
-    std::list<Sprite*>::iterator i;
-    for (i = sprites.begin(); i != sprites.end(); ++i) {
-        (*i)->draw();
+    std::list<GameObject*>::iterator i;
+    for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
+        (*i)->draw(renderer);
     }
-    TextureManager::Instance()->draw("mk", 0, 0, 51, 100);
     SDL_RenderPresent(renderer);
 }
 
@@ -46,28 +44,15 @@ void Game::clean() {
     SDL_Quit();
 }
 
-void Game::handleEvents() {
-    SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        switch (event.type) {
-        case SDL_QUIT:
-            prunning = false;
-            break;
-        default:
-            break;
-        }
-    }
-}
-
 void Game::update() {
     // SDL_SetRenderDrawColor(renderer, rand() % 256, rand() % 256, rand() % 256,
     //                        rand() % 256);
-    std::list<Sprite*>::iterator i;
-    for (i = sprites.begin(); i != sprites.end(); ++i) {
+    std::list<GameObject*>::iterator i;
+    for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
         (*i)->update();
     }
 }
 
-void Game::addSprite(Sprite* sprite) {
-    sprites.push_back(sprite);
+void Game::addGameObject(GameObject* gobject) {
+    gameObjects.push_back(gobject);
 }

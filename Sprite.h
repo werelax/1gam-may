@@ -1,28 +1,28 @@
 #ifndef __Sprite__
 #define __Sprite__
 
+#include "GameObject.h"
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
+#include <string>
 
-class Sprite
+class Sprite: public GameObject
 {
- public:
-    Sprite(const char* sheetpath, int x, int y, int spritew, int spriteh,
-           int frames, SDL_Renderer* ren);
-    ~Sprite() {};
+public:
+    Sprite() {};
+    Sprite(std::string textureid, int x, int y, int spritew, int spriteh,
+           int nframes = 0, int row = 0, int currentFrame = 0);
+    ~Sprite();
+    virtual void init(std::string textureid, int x, int y, int spritew, int spriteh,
+                      int nframes = 0, int row = 0, int currentFrame = 0);
+    virtual void draw(SDL_Renderer* renderer);
+    virtual void update();
 
-    void update();
-    void draw();
-
-    int xpos;
-    int ypos;
-
- private:
+protected:
     int nframes;
+    int row;
     int currentFrame;
-    int w;
-    int h;
-    SDL_Texture *texture;
+    std::string id;
     SDL_Renderer *renderer;
 };
 

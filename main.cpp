@@ -1,21 +1,25 @@
 #include "Game.h"
+#include "TextureManager.h"
+#include "InputHandler.h"
 #include "Sprite.h"
+#include "Character.h"
+#include <SDL2/SDL.h>
 
 Game* game = 0;
 
 int main(int argc, char* argv[]) {
     game = new Game();
-    // game->init("Jetpack", 100, 100, 1920, 1080, SDL_WINDOW_FULLSCREEN);
+    // TextureManager* textureManager = TextureManager::Instance();
+    InputHandler* inputHandler = InputHandler::Instance();
 
+    // game->init("Jetpack", 100, 100, 1920, 1080, SDL_WINDOW_FULLSCREEN);
     game->init("Jetpack", 100, 100, 640, 480, 0);
 
-    // game->addSprite(new Sprite("sprites.png", 0, 0, 51, 100, 12,
-    //                            game->getRenderer()));
-    // game->addSprite(new Sprite("chunli.png", 100, 100, 80, 156, 6,
-    //                            game->getRenderer()));
+    game->addGameObject(new Character(game->getRenderer()));
 
-    while (game->running()) {
-        game->handleEvents();
+    while (!inputHandler->shouldQuit()
+           && !inputHandler->isKeyDown(SDL_SCANCODE_ESCAPE)) {
+        inputHandler->update();
         game->update();
         game->render();
     }

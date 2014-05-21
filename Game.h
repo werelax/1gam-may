@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
-#include "Sprite.h"
+#include "GameObject.h"
 #include <list>
 
 class Game
@@ -17,22 +17,17 @@ class Game
 
     void render();
     void update();
-    void handleEvents();
     void clean();
 
     SDL_Renderer* getRenderer() { return renderer; }
-    void addSprite(Sprite* sprite);
-
-    bool running() { return prunning; }
+    void addGameObject(GameObject* sprite);
 
  private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    std::list<Sprite*> sprites;
-
-    bool prunning;
+    std::list<GameObject*> gameObjects;
 };
 
 #endif
