@@ -1,0 +1,122 @@
+
+Character.cpp,102
+Character::Character(SDL_Renderer* renderer) {Character3,24
+void Character::update() {update8,192
+
+Character.h,89
+#define __Character____Character__2,22
+class Character : public SpriteCharacter9,142
+
+Game.cpp,266
+bool Game::init(const char* title, int xpos, int ypos, int width, int height,init6,87
+void Game::render() {render31,934
+void Game::clean() {clean40,1164
+void Game::update() {update47,1306
+void Game::addGameObject(GameObject* gobject) {addGameObject56,1593
+
+Game.h,322
+#define __Game____Game__2,17
+class GameGame9,132
+    Game() {};Game12,154
+    ~Game() {};~Game13,169
+    SDL_Renderer* getRenderer() { return renderer; }getRenderer22,346
+    SDL_Window* window;window27,455
+    SDL_Renderer* renderer;renderer28,479
+    std::list<GameObject*> gameObjects;gameObjects30,508
+
+GameObject.cpp,98
+void GameObject::draw(SDL_Renderer* renderer) {draw3,25
+void GameObject::update() {update6,76
+
+GameObject.h,277
+#define __GameObject____GameObject__2,23
+class GameObjectGameObject7,92
+    GameObject(int x = 0, int y = 0, int iw = 0, int ih = 0):GameObject10,120
+    ~GameObject() {};~GameObject12,237
+    Vector2D* position;position17,335
+    int w;w18,359
+    int h;h19,370
+
+InputHandler.cpp,375
+InputHandler* InputHandler::Instance() {Instance3,27
+bool InputHandler::isKeyDown(SDL_Scancode key) {isKeyDown10,168
+bool InputHandler::shouldQuit() {shouldQuit18,323
+void InputHandler::onKeyDown() {onKeyDown22,378
+void InputHandler::onKeyUp() {onKeyUp26,467
+void InputHandler::update() {update30,554
+InputHandler* InputHandler::s_instance = 0;s_instance47,889
+
+InputHandler.h,312
+#define __InputHandler____InputHandler__2,25
+class InputHandlerInputHandler6,74
+    InputHandler(): keystates(NULL) {};InputHandler18,252
+    ~InputHandler() {};~InputHandler19,292
+    Uint8* keystates;keystates24,360
+    bool quitp;quitp25,382
+    static InputHandler* s_instance;s_instance26,398
+
+main.cpp,74
+Game* game = 0;game8,138
+int main(int argc, char* argv[]) {main10,155
+
+Makefile,174
+CXX = clang++CXX1,0
+SDL = -framework SDL2 -framework SDL2_imageSDL2,14
+CXXFLAGS = -Wall -c -std=c++11 -gCXXFLAGS3,58
+LDFLAGS = $(SDL)LDFLAGS4,92
+EXE = gameEXE5,109
+
+Sprite.cpp,311
+Sprite::Sprite(std::string textureid, int x, int y, int spritew, int spriteh,Sprite4,49
+Sprite::~Sprite() {~Sprite9,260
+void Sprite::init(std::string textureid, int x, int y, int spritew, int spriteh,init12,283
+void Sprite::draw(SDL_Renderer* renderer) {draw23,605
+void Sprite::update() {update29,858
+
+Sprite.h,283
+#define __Sprite____Sprite__2,19
+class Sprite: public GameObjectSprite9,138
+    Sprite() {};Sprite12,180
+    int nframes;nframes22,596
+    int row;row23,613
+    int currentFrame;currentFrame24,626
+    std::string id;id25,648
+    SDL_Renderer *renderer;renderer26,668
+
+TextureManager.cpp,371
+bool TextureManager::load(std::string fileName, std::string id,load4,49
+void TextureManager::draw(std::string id, int x, int y, int width,draw22,707
+void TextureManager::drawFrame(std::string id, int x, int y, int width,drawFrame27,863
+TextureManager* TextureManager::s_instance = 0;s_instance41,1338
+TextureManager* TextureManager::Instance() {Instance43,1387
+
+TextureManager.h,392
+#define __TextureManager____TextureManager__2,27
+struct texture_t {texture_t9,145
+    SDL_Texture* sdl_texture;sdl_texture10,164
+    SDL_Renderer* renderer;renderer11,194
+class TextureManagerTextureManager14,226
+    TextureManager() {}TextureManager24,563
+    std::map<std::string, texture_t> textureMap;textureMap25,587
+    static TextureManager* s_instance;s_instance26,636
+
+Vector2D.h,1027
+#define __Vector____Vector__2,19
+class Vector2DVector2D6,58
+    Vector2D(float init_x, float init_y): x(init_x), y(init_y) { }Vector2D9,83
+    float getX() { return x; }getX10,150
+    float getY() { return y; }getY11,181
+    void setX(float n_x) { x = n_x; }setX12,212
+    void setY(float n_y) { y = n_y; }setY13,250
+    float length() { return sqrt(x*x + y*y); }length14,288
+    Vector2D operator+(const Vector2D& v2) const {operator +15,335
+    friend Vector2D& operator+=(Vector2D& v1, const Vector2D& v2) {operator +=18,437
+    Vector2D operator*(float scalar) {operator *23,574
+    Vector2D& operator*=(float scalar) {operator *=26,668
+    Vector2D operator-(const Vector2D& v2) const {operator -31,779
+    friend Vector2D& operator-=(Vector2D& v1, const Vector2D& v2) {operator -=34,881
+    Vector2D operator/(float scalar) {operator /39,1018
+    Vector2D& operator/=(float scalar) {operator /=42,1112
+    void normalize() {normalize47,1223
+    float x;x54,1328
+    float y;y55,1341

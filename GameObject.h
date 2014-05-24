@@ -13,6 +13,7 @@ class GameObject
 
     virtual void update();
     virtual void draw(SDL_Renderer* renderer);
+    virtual void getRect(SDL_Rect* rect);
 
     Vector2D* position;
     int w;

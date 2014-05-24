@@ -9,7 +9,6 @@ Game* game = 0;
 
 int main(int argc, char* argv[]) {
     game = new Game();
-    // TextureManager* textureManager = TextureManager::Instance();
     InputHandler* inputHandler = InputHandler::Instance();
 
     // game->init("Jetpack", 100, 100, 1920, 1080, SDL_WINDOW_FULLSCREEN);
