@@ -33,9 +33,9 @@ GameObject.h,277
 class GameObjectGameObject7,92
     GameObject(int x = 0, int y = 0, int iw = 0, int ih = 0):GameObject10,120
     ~GameObject() {};~GameObject12,237
-    Vector2D* position;position17,335
-    int w;w18,359
-    int h;h19,370
+    Vector2D* position;position18,377
+    int w;w19,401
+    int h;h20,412
 
 InputHandler.cpp,375
 InputHandler* InputHandler::Instance() {Instance3,27
@@ -56,8 +56,8 @@ class InputHandlerInputHandler6,74
     static InputHandler* s_instance;s_instance26,398
 
 main.cpp,74
-Game* game = 0;game8,138
-int main(int argc, char* argv[]) {main10,155
+Game* game = 0;game9,156
+int main(int argc, char* argv[]) {main11,173
 
 Makefile,174
 CXX = clang++CXX1,0
@@ -120,3 +120,14 @@ class Vector2DVector2D6,58
     void normalize() {normalize47,1223
     float x;x54,1328
     float y;y55,1341
+
+Wall.cpp,88
+void Wall::draw(SDL_Renderer* renderer) {draw3,19
+void Wall::update() {update11,246
+
+Wall.h,216
+#define __Wall____Wall__2,17
+class Wall: public GameObjectWall9,134
+    Wall() {};Wall12,174
+    Wall(std::string textureid, int x, int y, int w, int h):Wall13,189
+    std::string textureid;textureid22,552

@@ -6,7 +6,7 @@ EXE = game
 
 all: $(EXE)
 
-$(EXE): inputhandler.o game.o character.o sprite.o gameobject.o texturemanager.o main.o
+$(EXE): inputhandler.o game.o character.o sprite.o gameobject.o wall.o texturemanager.o main.o
 	$(CXX) $(LDFLAGS) $^ -o $@
 
 main.o: main.cpp
@@ -25,6 +25,9 @@ character.o: Character.cpp
 	$(CXX) $(CXXFLAGS) -c $<
 
 texturemanager.o: TextureManager.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+wall.o: Wall.cpp
 	$(CXX) $(CXXFLAGS) -c $<
 
 # vector2d.o: Vector2D.cpp

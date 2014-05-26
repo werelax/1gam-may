@@ -29,6 +29,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height,
 }
 
 void Game::render() {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
     std::list<GameObject*>::iterator i;
     for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
@@ -38,7 +39,6 @@ void Game::render() {
 }
 
 void Game::clean() {
-    std::cout << "cleaning game\n";
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

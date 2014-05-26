@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "Sprite.h"
 #include "Character.h"
+#include "Wall.h"
 #include <SDL2/SDL.h>
 
 Game* game = 0;
@@ -15,11 +16,13 @@ int main(int argc, char* argv[]) {
     game->init("Jetpack", 100, 100, 640, 480, 0);
 
     game->addGameObject(new Character(game->getRenderer()));
-    // TODO: Map -> list of walls? readed from a level.map?
-    // Maybe I should just bite the bullet and do some nice tiling?
-    // But then: how to check collisions? Solid tiles (i like this one)?
-    // Or maybe different tile z-levels, like some collisionable, fg, bg, etc..
-    // game->addGameObjectList(new GameMap("level.map"));
+
+    // TODO: Read this from a map
+    // TODO: Give the walls a texture or something!
+    game->addGameObject(new Wall(100, 100, 100, 30));
+    game->addGameObject(new Wall(400, 300, 30, 300));
+    game->addGameObject(new Wall(150, 200, 200, 50));
+    game->addGameObject(new Wall(0, 450, 640, 30));
 
     while (!inputHandler->shouldQuit()
            && !inputHandler->isKeyDown(SDL_SCANCODE_ESCAPE)) {
