@@ -1,7 +1,7 @@
 CXX = clang++
 SDL = -framework SDL2 -framework SDL2_image
 CXXFLAGS = -Wall -c -std=c++11 -g
-LDFLAGS = $(SDL)
+LDFLAGS = $(SDL) -ljansson
 EXE = game
 
 all: $(EXE)

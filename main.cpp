@@ -4,11 +4,16 @@
 #include "Sprite.h"
 #include "Character.h"
 #include "Wall.h"
+#include "Config.h"
 #include <SDL2/SDL.h>
 
 Game* game = 0;
 
 int main(int argc, char* argv[]) {
+
+    Config* config = new Config("./config.json");
+    std::cout << config->getOptionAsString("test.some.nested.value") << std::endl;
+
     game = new Game();
     InputHandler* inputHandler = InputHandler::Instance();
 
@@ -31,6 +36,8 @@ int main(int argc, char* argv[]) {
         game->render();
     }
     game->clean();
+
+    std::cout << "I'm going out cleanly..." << std::endl;
 
     return 0;
 }

@@ -15,7 +15,7 @@ class InputHandler
     static InputHandler* Instance();
 
  private:
-    InputHandler(): keystates(NULL) {};
+    InputHandler(): keystates(NULL), quitp(false) {};
     ~InputHandler() {};
 
     void onKeyUp();

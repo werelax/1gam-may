@@ -7,12 +7,24 @@ Character.h,89
 #define __Character____Character__2,22
 class Character : public SpriteCharacter9,142
 
+Config.h,589
+#define __Config____Config__2,19
+class ConfigConfig9,119
+    Config(const char* filename): fileContents(readFileContents(filename)) {Config12,142
+    ~Config() {~Config21,506
+    const char* getOptionAsString(std::string optionName) {getOptionAsString25,556
+    void getOptionList(const char* optionName) {getOptionList35,863
+    json_t* getPathReference(json_t* root, const char* path) {getPathReference40,929
+    std::string readFileContents(const char* filename) {readFileContents50,1305
+    std::string fileContents;fileContents66,1843
+    json_t* root;root67,1873
+
 Game.cpp,266
 bool Game::init(const char* title, int xpos, int ypos, int width, int height,init6,87
 void Game::render() {render31,934
-void Game::clean() {clean40,1164
-void Game::update() {update47,1306
-void Game::addGameObject(GameObject* gobject) {addGameObject56,1593
+void Game::clean() {clean41,1222
+void Game::update() {update47,1328
+void Game::addGameObject(GameObject* gobject) {addGameObject56,1615
 
 Game.h,322
 #define __Game____Game__2,17
@@ -24,9 +36,10 @@ class GameGame9,132
     SDL_Renderer* renderer;renderer28,479
     std::list<GameObject*> gameObjects;gameObjects30,508
 
-GameObject.cpp,98
+GameObject.cpp,157
 void GameObject::draw(SDL_Renderer* renderer) {draw3,25
-void GameObject::update() {update6,76
+void GameObject::update() {update7,115
+void GameObject::getRect(SDL_Rect* rect) {getRect11,185
 
 GameObject.h,277
 #define __GameObject____GameObject__2,23
@@ -55,16 +68,16 @@ class InputHandlerInputHandler6,74
     bool quitp;quitp25,382
     static InputHandler* s_instance;s_instance26,398
 
-main.cpp,74
-Game* game = 0;game9,156
-int main(int argc, char* argv[]) {main11,173
+main.cpp,75
+Game* game = 0;game10,176
+int main(int argc, char* argv[]) {main12,193
 
-Makefile,174
+Makefile,184
 CXX = clang++CXX1,0
 SDL = -framework SDL2 -framework SDL2_imageSDL2,14
 CXXFLAGS = -Wall -c -std=c++11 -gCXXFLAGS3,58
-LDFLAGS = $(SDL)LDFLAGS4,92
-EXE = gameEXE5,109
+LDFLAGS = $(SDL) -ljanssonLDFLAGS4,92
+EXE = gameEXE5,119
 
 Sprite.cpp,311
 Sprite::Sprite(std::string textureid, int x, int y, int spritew, int spriteh,Sprite4,49
@@ -123,11 +136,11 @@ class Vector2DVector2D6,58
 
 Wall.cpp,88
 void Wall::draw(SDL_Renderer* renderer) {draw3,19
-void Wall::update() {update11,246
+void Wall::update() {update12,264
 
-Wall.h,216
+Wall.h,193
 #define __Wall____Wall__2,17
 class Wall: public GameObjectWall9,134
     Wall() {};Wall12,174
-    Wall(std::string textureid, int x, int y, int w, int h):Wall13,189
-    std::string textureid;textureid22,552
+    Wall(int x, int y, int w, int h):Wall13,189
+    std::string textureid;textureid21,436
