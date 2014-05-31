@@ -5,6 +5,10 @@
 #include <iostream>
 #include <cstring>
 #include <jansson.h>
+#include <list>
+#include "Wall.h"
+
+typedef std::list<Wall*> wall_list;
 
 class Config
 {
@@ -16,6 +20,8 @@ public:
     std::string getOptionAsString(std::string optionName);
 
     void getOptionList(const char* optionName);
+
+    wall_list getWallList(const char* optionName);
 
 private:
 

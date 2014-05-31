@@ -27,6 +27,20 @@ std::string Config::getOptionAsString(std::string optionName) {
 void Config::getOptionList(const char* optionName) {
 }
 
+wall_list Config::getWallList(const char* optionName) {
+    wall_list walls;
+    json_t* reference = getPathReference(root, optionName);
+    int x; int y; int w; int h;
+    for (size_t i = 0; i < json_array_size(reference); i += 4) {
+        x = json_integer_value(json_array_get(reference, i));
+        y = json_integer_value(json_array_get(reference, i+1));
+        w = json_integer_value(json_array_get(reference, i+2));
+        h = json_integer_value(json_array_get(reference, i+3));
+        walls.push_back(new Wall(x, y, w, h));
+    }
+    return walls;
+}
+
 json_t* Config::getPathReference(json_t* root, std::string path) {
     size_t prev = 0;
     size_t next = 0;

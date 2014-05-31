@@ -12,7 +12,6 @@ Game* game = 0;
 int main(int argc, char* argv[]) {
 
     Config* config = new Config("./config.json");
-    std::cout << config->getOptionAsString("test.some.nested.value") << std::endl;
 
     game = new Game();
     InputHandler* inputHandler = InputHandler::Instance();
@@ -22,12 +21,10 @@ int main(int argc, char* argv[]) {
 
     game->addGameObject(new Character(game->getRenderer()));
 
-    // TODO: Read this from a map
-    // TODO: Give the walls a texture or something!
-    game->addGameObject(new Wall(100, 100, 100, 30));
-    game->addGameObject(new Wall(400, 300, 30, 300));
-    game->addGameObject(new Wall(150, 200, 200, 50));
-    game->addGameObject(new Wall(0, 450, 640, 30));
+    std::list<Wall*> walls = config->getWallList("walls");
+    for_each(walls.begin(), walls.end(), [&] (Wall* wall) {
+        game->addGameObject(wall);
+    });
 
     while (!inputHandler->shouldQuit()
            && !inputHandler->isKeyDown(SDL_SCANCODE_ESCAPE)) {
