@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
 #include "GameObject.h"
+#include "Character.h"
 #include <list>
 
 class Game
@@ -21,12 +22,14 @@ class Game
 
     SDL_Renderer* getRenderer() { return renderer; }
     void addGameObject(GameObject* sprite);
+    void addCharacter(Character* player);
 
  private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
 
+    Character* player;
     std::list<GameObject*> gameObjects;
 };
 

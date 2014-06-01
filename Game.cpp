@@ -35,6 +35,7 @@ void Game::render() {
     for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
         (*i)->draw(renderer);
     }
+    player->draw(renderer);
     SDL_RenderPresent(renderer);
 }
 
@@ -51,8 +52,19 @@ void Game::update() {
     for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
         (*i)->update();
     }
+    // TODO: DOING:
+    // 1. Ghost-move the player (maybe with a method that returns a SDL_Rect)
+    // 2. Check the ghost against the walls with Collisions::aabbTest()
+    // 3. If collision: (TEMPORAL) prevent the move!
+    // 4. If not: do the actual movement
+    player->update();
+
 }
 
 void Game::addGameObject(GameObject* gobject) {
     gameObjects.push_back(gobject);
+}
+
+void Game::addCharacter(Character* player) {
+    this->player = player;
 }

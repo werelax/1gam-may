@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     // game->init("Jetpack", 100, 100, 1920, 1080, SDL_WINDOW_FULLSCREEN);
     game->init("Jetpack", 100, 100, 640, 480, 0);
 
-    game->addGameObject(new Character(game->getRenderer()));
+    game->addCharacter(new Character(game->getRenderer()));
 
     std::list<Wall*> walls = config->getWallList("walls");
     for_each(walls.begin(), walls.end(), [&] (Wall* wall) {
