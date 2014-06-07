@@ -56,6 +56,14 @@ void Game::update() {
         (*i)->update();
     }
 
+    // TODO: DOING: CONTINUE:
+    // TL;DR: player-wall collision = correction && NOT movement-prevention;
+    // The following code is the shittiest thing. Maybe its ok for bullet-type
+    // collision, but its terrible for player-wall collision.
+    // The idea here is to first move the player and *then* apply the correction
+    // so collisions in one axis doesn't affect the other. (look for the cool
+    // correction algorithm).
+
     // Update the player, with possible collision
     SDL_Rect playerPos;
     SDL_Rect wallPos;
