@@ -28,7 +28,7 @@ void Character::nextPosition(SDL_Rect* nextRect) {
 
 void Character::update(GameObject* collision) {
     Sprite::update();
-    if (collision != NULL) {
+    if (collision == NULL) {
         int speed = 10;
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
             *position += Vector2D(-speed, 0);
