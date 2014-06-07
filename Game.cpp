@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include <iostream>
 #include <stdlib.h>
+#include "Collisions.hpp"
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height,
                 int flags) {
@@ -48,16 +49,26 @@ void Game::clean() {
 void Game::update() {
     // SDL_SetRenderDrawColor(renderer, rand() % 256, rand() % 256, rand() % 256,
     //                        rand() % 256);
+
+    // Update game objects
     std::list<GameObject*>::iterator i;
     for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
         (*i)->update();
     }
-    // TODO: DOING:
-    // 1. Ghost-move the player (maybe with a method that returns a SDL_Rect)
-    // 2. Check the ghost against the walls with Collisions::aabbTest()
-    // 3. If collision: (TEMPORAL) prevent the move!
-    // 4. If not: do the actual movement
-    player->update();
+
+    // Update the player, with possible collision
+    SDL_Rect playerPos;
+    SDL_Rect wallPos;
+    GameObject* collision = NULL;
+    player->nextPosition(&playerPos);
+    for (i = gameObjects.begin(); i != gameObjects.end(); i++) {
+        (*i)->getRect(&wallPos);
+        if (Collisions::aabbTest(&playerPos, &wallPos)) {
+            collision = *i;
+            break;
+        }
+    }
+    player->update(collision);
 
 }
 

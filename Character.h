@@ -10,7 +10,8 @@ class Character : public Sprite
 {
 public:
     Character(SDL_Renderer* renderer);
-    virtual void update();
+    void update(GameObject* collision);
+    void nextPosition(SDL_Rect *rect);
 };
 
 #endif
