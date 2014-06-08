@@ -1,9 +1,9 @@
 #ifndef __Character__
 #define __Character__
 
-#include "Sprite.h"
-#include "TextureManager.h"
-#include "InputHandler.h"
+#include "Sprite.hpp"
+#include "TextureManager.hpp"
+#include "InputHandler.hpp"
 #include <SDL2/SDL.h>
 
 class Character : public Sprite

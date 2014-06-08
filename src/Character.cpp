@@ -1,4 +1,4 @@
-#include "Character.h"
+#include "Character.hpp"
 
 Character::Character(SDL_Renderer* renderer) {
     TextureManager::Instance()->load("./assets/sprites.png", "character", renderer);

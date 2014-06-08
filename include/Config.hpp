@@ -6,7 +6,7 @@
 #include <cstring>
 #include <jansson.h>
 #include <list>
-#include "Wall.h"
+#include "Wall.hpp"
 
 typedef std::list<Wall*> wall_list;
 

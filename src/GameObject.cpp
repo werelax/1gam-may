@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "GameObject.hpp"
 
 void GameObject::draw(SDL_Renderer* renderer) {
     // TODO: Make this method abstract

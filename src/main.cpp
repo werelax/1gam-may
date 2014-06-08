@@ -1,10 +1,10 @@
-#include "Game.h"
-#include "TextureManager.h"
-#include "InputHandler.h"
-#include "Sprite.h"
-#include "Character.h"
-#include "Wall.h"
-#include "Config.h"
+#include "Game.hpp"
+#include "TextureManager.hpp"
+#include "InputHandler.hpp"
+#include "Sprite.hpp"
+#include "Character.hpp"
+#include "Wall.hpp"
+#include "Config.hpp"
 #include <SDL2/SDL.h>
 
 Game* game = 0;

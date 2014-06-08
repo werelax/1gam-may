@@ -1,4 +1,4 @@
-#include "InputHandler.h"
+#include "InputHandler.hpp"
 
 InputHandler* InputHandler::Instance() {
     if (s_instance == 0) {

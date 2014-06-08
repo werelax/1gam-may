@@ -3,8 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
-#include "GameObject.h"
-#include "Character.h"
+#include "GameObject.hpp"
+#include "Character.hpp"
 #include <list>
 
 class Game

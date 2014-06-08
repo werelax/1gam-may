@@ -1,5 +1,5 @@
-#include "Game.h"
-#include "TextureManager.h"
+#include "Game.hpp"
+#include "TextureManager.hpp"
 #include <iostream>
 #include <stdlib.h>
 #include "Collisions.hpp"

@@ -1,4 +1,4 @@
-#include "Config.h"
+#include "Config.hpp"
 
 Config::Config(const char* filename) : fileContents(readFileContents(filename)) {
     json_error_t error;

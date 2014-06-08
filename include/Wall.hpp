@@ -1,7 +1,7 @@
 #ifndef __Wall__
 #define __Wall__
 
-#include "GameObject.h"
+#include "GameObject.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
 #include <string>

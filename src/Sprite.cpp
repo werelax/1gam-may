@@ -1,5 +1,5 @@
-#include "Sprite.h"
-#include "TextureManager.h"
+#include "Sprite.hpp"
+#include "TextureManager.hpp"
 
 Sprite::Sprite(std::string textureid, int x, int y, int spritew, int spriteh,
                int nframes, int row, int currentFrame) {

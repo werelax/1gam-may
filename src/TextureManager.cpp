@@ -1,4 +1,4 @@
-#include "TextureManager.h"
+#include "TextureManager.hpp"
 #include <iostream>
 
 bool TextureManager::load(std::string fileName, std::string id,
