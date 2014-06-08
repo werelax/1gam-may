@@ -1,40 +1,51 @@
 
-Character.cpp,102
+Character.cpp,194
 Character::Character(SDL_Renderer* renderer) {Character3,24
-void Character::update() {update8,192
+void Character::nextPosition(SDL_Rect* nextRect) {nextPosition8,192
+void Character::update(GameObject* collision) {update29,883
 
 Character.h,89
 #define __Character____Character__2,22
 class Character : public SpriteCharacter9,142
 
-Config.h,589
+Collisions.hpp,108
+class CollisionsCollisions5,37
+    static bool aabbTest(SDL_Rect* rect1, SDL_Rect* rect2) {aabbTest8,64
+
+Config.cpp,545
+Config::Config(const char* filename) : fileContents(readFileContents(filename)) {Config3,21
+Config::~Config() {~Config13,359
+std::string Config::getOptionAsString(std::string optionName) {getOptionAsString17,405
+void Config::getOptionList(const char* optionName) {getOptionList27,689
+wall_list Config::getWallList(const char* optionName) {getWallList30,745
+json_t* Config::getPathReference(json_t* root, std::string path) {getPathReference44,1307
+std::string Config::readFileContents(const char* filename) {readFileContents57,1776
+
+Config.h,195
 #define __Config____Config__2,19
-class ConfigConfig9,119
-    Config(const char* filename): fileContents(readFileContents(filename)) {Config12,142
-    ~Config() {~Config21,506
-    const char* getOptionAsString(std::string optionName) {getOptionAsString25,556
-    void getOptionList(const char* optionName) {getOptionList35,863
-    json_t* getPathReference(json_t* root, const char* path) {getPathReference40,929
-    std::string readFileContents(const char* filename) {readFileContents50,1305
-    std::string fileContents;fileContents66,1843
-    json_t* root;root67,1873
+typedef std::list<Wall*> wall_list;wall_list11,153
+class ConfigConfig13,190
+    std::string fileContents;fileContents32,555
+    json_t* root;root33,585
 
-Game.cpp,266
-bool Game::init(const char* title, int xpos, int ypos, int width, int height,init6,87
-void Game::render() {render31,934
-void Game::clean() {clean41,1222
-void Game::update() {update47,1328
-void Game::addGameObject(GameObject* gobject) {addGameObject56,1615
+Game.cpp,333
+bool Game::init(const char* title, int xpos, int ypos, int width, int height,init7,113
+void Game::render() {render32,960
+void Game::clean() {clean43,1276
+void Game::update() {update49,1382
+void Game::addGameObject(GameObject* gobject) {addGameObject83,2555
+void Game::addCharacter(Character* player) {addCharacter87,2642
 
-Game.h,322
+Game.h,360
 #define __Game____Game__2,17
-class GameGame9,132
-    Game() {};Game12,154
-    ~Game() {};~Game13,169
-    SDL_Renderer* getRenderer() { return renderer; }getRenderer22,346
-    SDL_Window* window;window27,455
-    SDL_Renderer* renderer;renderer28,479
-    std::list<GameObject*> gameObjects;gameObjects30,508
+class GameGame10,155
+    Game() {};Game13,177
+    ~Game() {};~Game14,192
+    SDL_Renderer* getRenderer() { return renderer; }getRenderer23,369
+    SDL_Window* window;window29,520
+    SDL_Renderer* renderer;renderer30,544
+    Character* player;player32,573
+    std::list<GameObject*> gameObjects;gameObjects33,596
 
 GameObject.cpp,157
 void GameObject::draw(SDL_Renderer* renderer) {draw3,25
@@ -59,14 +70,14 @@ void InputHandler::onKeyUp() {onKeyUp26,467
 void InputHandler::update() {update30,554
 InputHandler* InputHandler::s_instance = 0;s_instance47,889
 
-InputHandler.h,312
+InputHandler.h,326
 #define __InputHandler____InputHandler__2,25
 class InputHandlerInputHandler6,74
-    InputHandler(): keystates(NULL) {};InputHandler18,252
-    ~InputHandler() {};~InputHandler19,292
-    Uint8* keystates;keystates24,360
-    bool quitp;quitp25,382
-    static InputHandler* s_instance;s_instance26,398
+    InputHandler(): keystates(NULL), quitp(false) {};InputHandler18,252
+    ~InputHandler() {};~InputHandler19,306
+    Uint8* keystates;keystates24,374
+    bool quitp;quitp25,396
+    static InputHandler* s_instance;s_instance26,412
 
 main.cpp,75
 Game* game = 0;game10,176

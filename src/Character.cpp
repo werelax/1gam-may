@@ -1,7 +1,7 @@
 #include "Character.h"
 
 Character::Character(SDL_Renderer* renderer) {
-    TextureManager::Instance()->load("sprites.png", "character", renderer);
+    TextureManager::Instance()->load("./assets/sprites.png", "character", renderer);
     init("character", 0, 0, 51, 100, 12);
 }
 
