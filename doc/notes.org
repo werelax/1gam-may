@@ -1,0 +1,4 @@
+#+STARTUP: indent
+
+* Good explanation of how to properly correct AABB SAT collision:
+- [[http://gamedev.stackexchange.com/questions/17502/how-to-deal-with-corner-collisions-in-2d/18589#18589][how to deal with corner collisions in 2d]]
