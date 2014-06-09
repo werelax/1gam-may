@@ -1,5 +1,4 @@
-#ifndef __Character__
-#define __Character__
+#pragma once
 
 #include "Sprite.hpp"
 #include "TextureManager.hpp"
@@ -10,8 +9,9 @@ class Character : public Sprite
 {
 public:
     Character(SDL_Renderer* renderer);
-    void update(GameObject* collision);
+    void update();
     void nextPosition(SDL_Rect *rect);
-};
 
-#endif
+protected:
+    void advance(Vector2D* positio);
+};

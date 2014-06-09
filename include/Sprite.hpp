@@ -1,12 +1,11 @@
-#ifndef __Sprite__
-#define __Sprite__
+#pragma once
 
-#include "GameObject.hpp"
+#include "MovingGameObject.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2_Image/SDL_Image.h>
 #include <string>
 
-class Sprite: public GameObject
+class Sprite: public MovingGameObject
 {
 public:
     Sprite() {};
@@ -25,5 +24,3 @@ protected:
     std::string id;
     SDL_Renderer *renderer;
 };
-
-#endif

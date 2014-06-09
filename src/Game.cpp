@@ -76,7 +76,7 @@ void Game::update() {
             break;
         }
     }
-    player->update(collision);
+    player->update();
 
 }
 

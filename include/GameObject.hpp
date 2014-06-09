@@ -1,5 +1,4 @@
-#ifndef __GameObject__
-#define __GameObject__
+#pragma once
 
 #include <SDL2/SDL.h>
 #include "Vector2D.hpp"
@@ -19,5 +18,3 @@ class GameObject
     int w;
     int h;
 };
-
-#endif
