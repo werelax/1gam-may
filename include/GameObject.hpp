@@ -7,14 +7,14 @@ class GameObject
 {
  public:
     GameObject(int x = 0, int y = 0, int iw = 0, int ih = 0):
-        position(new Vector2D(x, y)), w(iw), h(ih) {};
+        position(x, y), w(iw), h(ih) {};
     ~GameObject() {};
 
     virtual void update();
-    virtual void draw(SDL_Renderer* renderer);
-    virtual void getRect(SDL_Rect* rect);
+    virtual void draw(SDL_Renderer &renderer);
+    virtual void getRect(SDL_Rect &rect);
 
-    Vector2D* position;
+    Vector2D position;
     int w;
     int h;
 };

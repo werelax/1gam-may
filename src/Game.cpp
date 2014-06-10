@@ -67,11 +67,11 @@ void Game::update() {
     // Update the player, with possible collision
     SDL_Rect playerPos;
     SDL_Rect wallPos;
-    GameObject* collision = NULL;
-    player->nextPosition(&playerPos);
+    GameObject* collision = nullptr;
+    player->nextPosition(playerPos);
     for (i = gameObjects.begin(); i != gameObjects.end(); i++) {
-        (*i)->getRect(&wallPos);
-        if (Collisions::aabbTest(&playerPos, &wallPos)) {
+        (*i)->getRect(wallPos);
+        if (Collisions::aabbTest(playerPos, wallPos)) {
             collision = *i;
             break;
         }

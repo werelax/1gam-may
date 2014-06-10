@@ -6,7 +6,7 @@ Character::Character(SDL_Renderer* renderer) {
     setSpeed(1, 1, 10);
 }
 
-void Character::nextPosition(SDL_Rect* nextRect) {
+void Character::nextPosition(SDL_Rect &nextRect) {
     Vector2D newPosition = *position;
     advance(&newPosition);
     nextRect->x = newPosition.getX();
@@ -20,7 +20,7 @@ void Character::update() {
     advance(position);
 }
 
-void Character::advance(Vector2D* position) {
+void Character::advance(Vector2D &position) {
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
         *position += Vector2D(-speed->getX(), 0);
     }

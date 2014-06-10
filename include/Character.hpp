@@ -10,8 +10,8 @@ class Character : public Sprite
 public:
     Character(SDL_Renderer* renderer);
     void update();
-    void nextPosition(SDL_Rect *rect);
+    void nextPosition(SDL_Rect &nextRect);
 
 protected:
-    void advance(Vector2D* positio);
+    void advance(Vector2D &position);
 };
