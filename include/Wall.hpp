@@ -12,7 +12,7 @@ public:
     Wall() {};
     Wall(int x, int y, int w, int h):
         GameObject(x, y, w, h) {};
-    virtual void draw(SDL_Renderer* renderer);
+    virtual void draw(SDL_Renderer &renderer);
     virtual void update();
     // for calculating collisions against?
     // virtual void getRect(SDL_Rect* rect);

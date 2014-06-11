@@ -34,9 +34,9 @@ void Game::render() {
     SDL_RenderClear(renderer);
     std::list<GameObject*>::iterator i;
     for (i = gameObjects.begin(); i != gameObjects.end(); ++i) {
-        (*i)->draw(renderer);
+        (*i)->draw(*renderer);
     }
-    player->draw(renderer);
+    player->draw(*renderer);
     SDL_RenderPresent(renderer);
 }
 

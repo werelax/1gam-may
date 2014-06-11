@@ -14,7 +14,7 @@ public:
     ~Sprite();
     virtual void init(std::string textureid, int x, int y, int spritew, int spriteh,
                       int nframes = 0, int row = 0, int currentFrame = 0);
-    virtual void draw(SDL_Renderer* renderer);
+    virtual void draw(SDL_Renderer &renderer);
     virtual void update();
 
 protected:

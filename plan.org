@@ -1,0 +1,7 @@
+#+STARTUP: indent
+
+* Plan for the weekend: Objectives
+** Saturday
+*** Collision with axis-aligned boxes
+** Sunday
+*** Gravity + floor behaviour

@@ -12,7 +12,7 @@ Sprite::~Sprite() {
 void Sprite::init(std::string textureid, int x, int y, int spritew, int spriteh,
                   int nframes, int row, int currentFrame) {
     id = textureid;
-    position = new Vector2D(x, y);
+    position = Vector2D(x, y);
     w = spritew;
     h = spriteh;
     this->nframes = nframes;
@@ -20,9 +20,9 @@ void Sprite::init(std::string textureid, int x, int y, int spritew, int spriteh,
     this->currentFrame = currentFrame;
 }
 
-void Sprite::draw(SDL_Renderer* renderer) {
-    TextureManager::Instance()->drawFrame(id, round(position->getX()),
-                                          round(position->getY()), w, h, row,
+void Sprite::draw(SDL_Renderer &renderer) {
+    TextureManager::Instance()->drawFrame(id, round(position.getX()),
+                                          round(position.getY()), w, h, row,
                                           currentFrame);
 }
 
